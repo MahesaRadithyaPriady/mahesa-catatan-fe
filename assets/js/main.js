@@ -243,15 +243,12 @@ const deleteCatatan = (id) => {
 
 const editCatatan = async (id) => {
   showEditModalLoading();
-  const datasCatatan = await fetch(
-    `http://localhost:3000/api/v1/catatan/${id}`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
+  const datasCatatan = await fetch(`${apiURL}${id}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
   const datasCatatanJson = await datasCatatan.json();
   const data = await datasCatatanJson.data;
   editModalBody.innerHTML = `
