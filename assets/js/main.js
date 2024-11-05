@@ -1,4 +1,5 @@
 // !Isialisasi variable
+const apiURL = "https://mahes-api-catatan.vercel.app/api/v1/catatan/";
 const dataTable = document.getElementById("data-table");
 const tambahCatatan = document.getElementById("tambahCatatan");
 const inputNameCatatan = document.getElementById("namaCatatan");
@@ -71,7 +72,7 @@ const showEditModalLoading = () => {
 
 const displayViewMore = async (id) => {
   showViewModalLoading();
-  let dataFetch = await fetch(`http://localhost:3000/api/v1/catatan/${id}`);
+  let dataFetch = await fetch(`${apiURL}${id}`);
   let data = await dataFetch.json();
 
   viewModalBody.innerHTML = `
@@ -104,7 +105,7 @@ localMessage();
 const fetchingData = async () => {
   showTableLoading();
   try {
-    const dataFetch = await fetch("http://localhost:3000/api/v1/catatan/");
+    const dataFetch = await fetch(`${apiURL}`);
     const data = await dataFetch.json();
     dataTable.innerHTML = "";
 
@@ -181,7 +182,7 @@ tambahCatatan.addEventListener("click", (e) => {
     return;
   }
 
-  fetch("http://localhost:3000/api/v1/catatan/", {
+  fetch(`${apiURL}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -213,7 +214,7 @@ tambahCatatan.addEventListener("click", (e) => {
 });
 
 const deleteCatatan = (id) => {
-  fetch(`http://localhost:3000/api/v1/catatan/${id}/`, {
+  fetch(`${apiURL}/${id}/`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -269,7 +270,7 @@ const editCatatan = async (id) => {
 const updateCatatan = async (id) => {
   const editNamaCatatan = document.getElementById("editNamaCatatan").value;
   const editIsiCatatan = document.getElementById("editIsiCatatan").value;
-  const dataFetch = await fetch(`http://localhost:3000/api/v1/catatan/${id}`, {
+  const dataFetch = await fetch(`${apiURL}${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
