@@ -214,7 +214,7 @@ tambahCatatan.addEventListener("click", (e) => {
 });
 
 const deleteCatatan = (id) => {
-  fetch(`${apiURL}/${id}/`, {
+  fetch(`${apiURL}${id}/`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
