@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catatan</title>
+    <link
+      rel="stylesheet"
+      href="./assets/package/bootstrap/css/bootstrap.min.css"
+    />
+    <style>
+      .table-responsive {
+        overflow-x: auto;
+      }
+      .table th,
+      .table td {
+        white-space: nowrap;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid vh-100" style="background-color: #eee">
+      <div class="container">
+        <div class="row text-center p-4">
+          <div class="col-12">
+            <h1 class="text-uppercase font-monospace fw-bold">Catatan</h1>
+          </div>
+        </div>
+        <div class="row text-end">
+          <div class="col-12">
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+              aria-hidden="true"
+            >
+              + CATATAN
+            </button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="table-responsive mt-5 d-flex">
+              <table
+                class="table table-hover table-light border border-2 text-center"
+              >
+                <thead>
+                  <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Nama Catatan</th>
+                    <th scope="col">Isi Catatan</th>
+                    <th scope="col">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody id="data-table"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <h6 class="text-center">
+              &copy; Project Gabut FullStack By Mahesa 2024
+            </h6>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Tambah Catatan -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
+              Tambah Catatan
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <label for="namaCatatan" class="fw-bold fs-5">Nama Catatan :</label>
+            <input
+              class="form-control"
+              type="text"
+              name="namaCatatan"
+              id="namaCatatan"
+              value="Example"
+            />
+            <label for="isiCatatan" class="fw-bold fs-5 mt-3"
+              >Isi Catatan :</label
+            >
+            <textarea
+              class="form-control"
+              name="isiCatatan"
+              id="isiCatatan"
+            ></textarea>
+          </div>
+          <div class="modal-footer">
+            <button id="tambahCatatan" type="button" class="btn btn-primary">
+              Tambahkan Tugas
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal View Catatan -->
+    <div
+      class="modal fade"
+      id="viewModal"
+      tabindex="-1"
+      aria-labelledby="viewModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5 fw-bold">View Catatan</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card border-0">
+              <div class="card-body" id="viewModalBody"></div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Edit Catatan -->
+    <div
+      class="modal fade"
+      id="editModal"
+      tabindex="-1"
+      aria-labelledby="editModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5 fw-bold">Edit Catatan</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body" id="editModalBody"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Delete Catatan -->
+    <div
+      class="modal fade"
+      id="deleteModal"
+      tabindex="-1"
+      aria-labelledby="deleteModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5 fw-bold">Delete Catatan</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card border-0">
+              <div class="card-body">
+                <h5 class="text-center">
+                  Apakah Anda Yakin Ingin Menghapus Data Catatan Ini?
+                </h5>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+              id="closeDeleteModal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./assets/package/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./assets/js/main.js"></script>
+  </body>
+</html>
