@@ -1,5 +1,5 @@
 // !Isialisasi variable
-const apiURL = "http://localhost:3000/api/v1/catatan/";
+const apiURL = "https://mahes-api-catatan.vercel.app/api/v1/catatan/";
 const dataTable = document.getElementById("data-table");
 const tambahCatatan = document.getElementById("tambahCatatan");
 const inputNameCatatan = document.getElementById("namaCatatan");
