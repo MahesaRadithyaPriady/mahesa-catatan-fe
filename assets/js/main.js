@@ -4,6 +4,7 @@ const dataTable = document.getElementById("data-table");
 const tambahCatatan = document.getElementById("tambahCatatan");
 const inputNameCatatan = document.getElementById("namaCatatan");
 const inputIsiCatatan = document.getElementById("isiCatatan");
+const tambahButtonX = document.getElementById("closeModalTambahCatatanX");
 const closeDelete = document.getElementById("deleteModal");
 const closeDeleteModal = document.getElementById("closeDeleteModal");
 const editModal = document.getElementById("editModal");
@@ -110,13 +111,13 @@ const loadingSendRequest = (e, tipe) => {
   closeDeleteModal.setAttribute("disabled", true);
   closeDeleteModalX.setAttribute("disabled", true);
   closeEditModalX.setAttribute("disabled", true);
+  tambahButtonX.setAttribute("disabled", true);
   editModal.setAttribute("disabled", true);
-  e.innerHTML = `<button class="badge rounded-pill btn btn-${
-    tipe ? tipe : "primary"
-  }" type="button" disabled>
+
+  e.innerHTML = `
   <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
   <span role="status">Loading...</span>
-</button>`;
+`;
 };
 
 const reload = () => {

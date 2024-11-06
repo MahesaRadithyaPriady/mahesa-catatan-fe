@@ -8,6 +8,7 @@
       rel="stylesheet"
       href="./assets/package/bootstrap/css/bootstrap.min.css"
     />
+
     <style>
       .table-responsive {
         overflow-x: auto;
@@ -19,11 +20,14 @@
     </style>
   </head>
   <body>
-    <div class="container-fluid vh-100" style="background-color: #eee">
+    <div
+      class="container-fluid vh-100"
+      style="background-color: rgb(255, 255, 255)"
+    >
       <div class="container">
         <div class="row text-center p-4">
           <div class="col-12">
-            <h1 class="text-uppercase font-monospace fw-bold">Catatan</h1>
+            <h1 class="text-uppercase font-monospace fw-bold mt-5">Catatan</h1>
           </div>
         </div>
         <div class="row text-end">
@@ -43,7 +47,7 @@
           <div class="col-12">
             <div class="table-responsive mt-5 d-flex">
               <table
-                class="table table-hover table-light border border-2 text-center"
+                class="table table-hover border border-dark border-1 text-center text-white"
               >
                 <thead>
                   <tr>
@@ -60,8 +64,11 @@
         </div>
         <div class="row">
           <div class="col-12">
-            <h6 class="text-center">
-              &copy; Project Gabut FullStack By Mahesa 2024
+            <h6 class="text-center fw-bold mt-5">
+              &copy; Project Catatan FullStack By Mahesa 2024
+            </h6>
+            <h6 class="text-center fw-bold text-black bg-tertiary opacity-25">
+              V1.2
             </h6>
           </div>
         </div>
@@ -89,6 +96,7 @@
               class="btn-close"
               data-bs-dismiss="modal"
               aria-label="Close"
+              id="closeModalTambahCatatanX"
             ></button>
           </div>
           <div class="modal-body">
