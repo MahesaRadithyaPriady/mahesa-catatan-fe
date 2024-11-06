@@ -1,12 +1,17 @@
 // !Isialisasi variable
-const apiURL = "https://mahes-api-catatan.vercel.app/api/v1/catatan/";
+const apiURL = "http://localhost:3000/api/v1/catatan/";
 const dataTable = document.getElementById("data-table");
 const tambahCatatan = document.getElementById("tambahCatatan");
 const inputNameCatatan = document.getElementById("namaCatatan");
 const inputIsiCatatan = document.getElementById("isiCatatan");
+const closeDelete = document.getElementById("deleteModal");
 const closeDeleteModal = document.getElementById("closeDeleteModal");
+const editModal = document.getElementById("editModal");
 const viewModalBody = document.getElementById("viewModalBody");
 const editModalBody = document.getElementById("editModalBody");
+const closeDeleteModalX = document.getElementById("closeDeleteModalX");
+const closeEditModalX = document.getElementById("closeEditModalX");
+let btnDelete;
 
 // ! Kondisi Dimana kata Lebih Diganti Dengan ...
 const truncateText = (text, wordLimit) => {
@@ -22,8 +27,7 @@ const displayBtnDelete = (id) => {
   if (existingBtn) {
     existingBtn.remove();
   }
-
-  const btnDelete = document.createElement("button");
+  btnDelete = document.createElement("button");
   btnDelete.id = "dynamicDeleteButton";
   btnDelete.innerHTML = "Confirm Delete";
   btnDelete.className = "btn btn-danger";
@@ -99,6 +103,25 @@ const localMessage = () => {
 };
 
 localMessage();
+
+// ! Loading Untuk Tombol
+const loadingSendRequest = (e, tipe) => {
+  close;
+  closeDeleteModal.setAttribute("disabled", true);
+  closeDeleteModalX.setAttribute("disabled", true);
+  closeEditModalX.setAttribute("disabled", true);
+  editModal.setAttribute("disabled", true);
+  e.innerHTML = `<button class="badge rounded-pill btn btn-${
+    tipe ? tipe : "primary"
+  }" type="button" disabled>
+  <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+  <span role="status">Loading...</span>
+</button>`;
+};
+
+const reload = () => {
+  window.location.reload();
+};
 
 // ! Fetching Data
 
@@ -181,7 +204,7 @@ tambahCatatan.addEventListener("click", (e) => {
     alert("Both name and content must not exceed 20 words.");
     return;
   }
-
+  loadingSendRequest(tambahCatatan);
   fetch(`${apiURL}`, {
     method: "POST",
     headers: {
@@ -198,7 +221,8 @@ tambahCatatan.addEventListener("click", (e) => {
         localStorage.setItem("message", data.message);
         localStorage.setItem("icon", "success");
         localStorage.setItem("title", "Success !");
-        return window.location.reload();
+        reload();
+        return;
       }
       throw new Error(`${data.message}`);
     })
@@ -206,14 +230,15 @@ tambahCatatan.addEventListener("click", (e) => {
       localStorage.setItem("message", error.message);
       localStorage.setItem("icon", "error");
       localStorage.setItem("title", "Oops!");
+      inputNameCatatan.value = "";
+      inputIsiCatatan.value = "";
       window.location.reload();
     });
-
-  inputNameCatatan.value = "";
-  inputIsiCatatan.value = "";
 });
 
 const deleteCatatan = (id) => {
+  loadingSendRequest(dynamicDeleteButton, "danger");
+
   fetch(`${apiURL}${id}/`, {
     method: "DELETE",
     headers: {
@@ -257,7 +282,7 @@ const editCatatan = async (id) => {
     <label for="editIsiCatatan" class="fw-bold fs-5 mt-3">Isi Catatan :</label>
     <input class="form-control" value="${data.isi_catatan}" id="editIsiCatatan"/>
     <div class="modal-footer">
-      <button type="button" onclick="updateCatatan('${data.id}')" class="btn btn-primary">
+      <button type="button" id="closeEditModal" onclick="updateCatatan('${data.id}')" class="btn btn-primary">
         Simpan Perubahan
       </button>
     </div>
@@ -265,6 +290,7 @@ const editCatatan = async (id) => {
 };
 
 const updateCatatan = async (id) => {
+  loadingSendRequest(closeEditModal, "primary");
   const editNamaCatatan = document.getElementById("editNamaCatatan").value;
   const editIsiCatatan = document.getElementById("editIsiCatatan").value;
   const dataFetch = await fetch(`${apiURL}${id}`, {
