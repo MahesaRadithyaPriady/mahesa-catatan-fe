@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Catatan</title>
     <link
+      rel="shortcut icon"
+      href="./assets/img/favicon.ico"
+      type="image/x-icon"
+    />
+    <link
       rel="stylesheet"
       href="./assets/package/bootstrap/css/bootstrap.min.css"
     />
@@ -36,10 +41,20 @@
               type="button"
               class="btn btn-primary"
               data-bs-toggle="modal"
-              data-bs-target="#exampleModal"
+              data-bs-target="#modalTambahCatatan"
               aria-hidden="true"
             >
               + CATATAN
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger ms-3"
+              data-bs-toggle="modal"
+              data-bs-target="#modalLogout"
+              aria-hidden="true"
+              id="btnLogout"
+            >
+              LOGOUT
             </button>
           </div>
         </div>
@@ -68,8 +83,44 @@
               &copy; Project Catatan FullStack By Mahesa 2024
             </h6>
             <h6 class="text-center fw-bold text-black bg-tertiary opacity-25">
-              V1.2
+              V1.5.0
             </h6>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ModalLogout -->
+    <div
+      class="modal fade"
+      id="modalLogout"
+      tabindex="-1"
+      aria-labelledby="modalLogoutLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="modalLogoutLabel">Logout ?</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">Apakah Anda Yakin Ingin Logout ?</div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-danger" id="logout">
+              Logout
+            </button>
           </div>
         </div>
       </div>
@@ -78,9 +129,9 @@
     <!-- Modal Tambah Catatan -->
     <div
       class="modal fade"
-      id="exampleModal"
+      id="modalTambahCatatan"
       tabindex="-1"
-      aria-labelledby="exampleModalLabel"
+      aria-labelledby="modalTambahCatatanLabel"
       aria-hidden="true"
       data-bs-backdrop="static"
       data-bs-keyboard="false"
@@ -88,7 +139,7 @@
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
+            <h1 class="modal-title fs-5 fw-bold" id="modalTambahCatatanLabel">
               Tambah Catatan
             </h1>
             <button
@@ -235,8 +286,79 @@
       </div>
     </div>
 
+    <!-- Modal Login -->
+    <div
+      class="modal fade"
+      id="modalLogin"
+      tabindex="-1"
+      aria-labelledby="modalLoginLabel"
+      aria-hidden="true"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="modalLoginLabel">
+              Login Your Account !
+            </h1>
+          </div>
+          <div class="modal-body" id="modalLoginBody">
+            <div class="alert alert-primary" role="alert">
+              A simple primary alert—check it out!
+            </div>
+            <h5 class="text-center">Enter Your Credentials</h5>
+            <div class="input-group flex-nowrap">
+              <span class="input-group-text" id="addon-wrapping">Username</span>
+              <input
+                type="text"
+                id="username"
+                class="form-control"
+                aria-label="Username"
+                aria-describedby="addon-wrapping"
+              />
+            </div>
+            <div class="input-group flex-nowrap mt-3">
+              <span class="input-group-text" id="addon-wrapping">Password</span>
+              <input
+                type="password"
+                id="password"
+                class="form-control"
+                aria-label="Password"
+                aria-describedby="addon-wrapping"
+              />
+            </div>
+            <div class="textModalLoginFooter my-4 d-flex justify-content-start">
+              <div class="textForgetPassword d-flex align-items-center">
+                <a href="#">Lupa Password ?</a>
+              </div>
+              <div
+                class="buttonLogin d-flex justify-content-center align-content-center"
+              >
+                <button
+                  type="button"
+                  class="btn btn-primary mx-3 mt-2 bagde rounded-pill"
+                  id="btnLogin"
+                  onclick="login()"
+                  style="width: 170px"
+                >
+                  Login
+                </button>
+              </div>
+              <div
+                class="textRegister d-flex align-items-center justify-content-end"
+              >
+                <a href="?modal=register">Belum Punya Akun ?</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="./assets/package/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="./assets/js/main.js"></script>
+    <script src="./node_modules/sweetalert2/dist/sweetalert2.all.js"></script>
+
+    <script src="./assets/js/index/main.js"></script>
   </body>
 </html>
