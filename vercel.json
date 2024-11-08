@@ -4,7 +4,7 @@
     {
       "src": "index.html",
       "use": "@vercel/static",
-      "config": { "includeFiles": ["node_modules/**"] }
+      "config": { "includeFiles": ["assets/**", "node_modules/**"] }
     }
   ],
   "routes": [
