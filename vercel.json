@@ -2,8 +2,15 @@
   "version": 2,
   "builds": [
     {
-      "src": "index.html",
+      "src": "*.html",
       "use": "@vercel/static"
+    },
+    {
+      "src": "node_modules/**",
+      "use": "@vercel/static",
+      "config": {
+        "includeFiles": ["node_modules/sweetalert2/dist/sweetalert2.all.js"]
+      }
     }
   ],
   "routes": [
