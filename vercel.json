@@ -3,7 +3,7 @@
   "builds": [
     {
       "src": "index.html",
-      "use": "@vercel/static",
+      "use": "@vercel/serve",
       "config": { "includeFiles": ["assets/**", "node_modules/**"] }
     }
   ],
