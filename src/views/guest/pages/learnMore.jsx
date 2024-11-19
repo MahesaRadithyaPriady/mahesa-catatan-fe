@@ -20,7 +20,7 @@ const LearnMore = () => {
         <div className="hero max-h-screen max-sm:mb-24">
           <div className="hero-content flex-col  lg:flex-row-reverse lg:min-h-screen max-sm:mb-24 max-md:mb-12 max-lg:mb-14 ">
             <img
-              src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
+              src="img/learnMore.png"
               className="max-w-sm rounded-lg shadow-2xl"
             />
             <div>
