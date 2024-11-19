@@ -29,19 +29,19 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/login",
+    path: "login",
     element: <Login />,
   },
   {
-    path: "/register",
+    path: "register",
     element: <Register />,
   },
   {
-    path: "/verify",
+    path: "verify",
     element: <ProtectedDashboard />,
   },
   {
-    path: "/guest/learnMore",
+    path: "guest/learnMore",
     element: (
       <motion.div
         initial={{ opacity: 0 }}
@@ -53,19 +53,19 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/user/dashboard",
+    path: "user/dashboard",
     element: <UserDashboard />,
   },
   {
-    path: "/user/new-catatan",
+    path: "user/new-catatan",
     element: <ProtectedUserNewCatatan />,
   },
   {
-    path: "/user/edit-catatan",
+    path: "user/edit-catatan",
     element: <UserEditCatatanPage />,
   },
   {
-    path: "/user/view-catatan",
+    path: "user/view-catatan",
     element: <ViewCatatanPage />,
   },
   {
