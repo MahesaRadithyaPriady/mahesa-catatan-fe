@@ -1,7 +1,8 @@
 const ConsoleWarn = () => {
-  if (import.meta.env.VITE_NODE_ENV === "development") {
+  const settings = true;
+  if (!settings) {
     console.warn("Development Mode");
-  } else if (import.meta.env.VITE_NODE_ENV === "production") {
+  } else if (settings) {
     console.error = () => {};
     console.warn = () => {};
     console.info = () => {};
