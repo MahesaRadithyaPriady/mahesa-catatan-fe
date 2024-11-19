@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
-
+const settings = true;
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react({})],
@@ -10,7 +10,7 @@ export default defineConfig({
         {
           name: "remove-console-logs",
           transform(code) {
-            if (import.meta.env.VITE_NODE_ENV === "production") {
+            if (settings) {
               return code.replace(/console\.(log|debug|info)\(.*\);?/g, "");
             }
             return code;
